@@ -1,0 +1,54 @@
+server:
+  port: 7777
+
+error:
+  debug: true
+
+###
+#   Database Settings
+###
+spring:
+  application:
+    name: suivi-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/suivie-client
+    username: postgres
+    password: mysecretpassword
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: false
+        use_sql_comments: false
+        format_sql: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
+  #It looks like there's a bug in Keycloak's Spring Security integration
+  #https://stackoverflow.com/questions/53318134/unable-to-use-keycloak-in-spring-boot-2-1-due-to-duplicated-bean-registration-ht
+  main:
+    allow-bean-definition-overriding: true
+#    web-application-type: none
+  cloud:
+    discovery:
+      enabled: true
+keycloak:
+  realm: suivie-client-realm
+  auth-server-url: http://localhost:8080/auth/
+  bearer-only: true
+  ssl-required: none
+  resource: suivie-client-app
+  public-client: false
+  cors: true
+#Disabling actuator security
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8763/eureka/
+

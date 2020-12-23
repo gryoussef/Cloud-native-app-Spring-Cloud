@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ma.s.gcm.SuiviClientsApplicationTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.306 s - in ma.s.gcm.SuiviClientsApplicationTest

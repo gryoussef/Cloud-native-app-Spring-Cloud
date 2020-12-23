@@ -1,0 +1,20 @@
+version: "3"
+services:
+  bureauetude-backend-service:
+    image: suivi-clients-service
+    depends_on:
+      - postgres
+    ports:
+      - "7777:7777"
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=suivie-client
+    volumes:
+    - ./data/:/var/lib/postgres
+
